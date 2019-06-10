@@ -1,4 +1,5 @@
 import { setup, mock,Random } from "mockjs";
+import PathToRegexp from "path-to-regexp";
 
 setup({
   timeout: '200-600'
@@ -18,7 +19,7 @@ mock('/api/assets', 'get', {
   }
 });
 
-mock('/api/student/info', 'post', {
+mock(/^\/api\/student\/info/, 'get', {
   stateCode: 200,
   message: '',
   data: {

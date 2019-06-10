@@ -1,6 +1,5 @@
 import Vue from "vue";
 import {
-  Card,
   Button,
   Paper,
   Drawer,
@@ -9,13 +8,13 @@ import {
   Form,
   Grid,
   Checkbox,
-  theme
+  theme,
+  Select
 } from 'muse-ui';
 import 'muse-ui/lib/styles/base.less';
 
 theme.use('light');
 
-Vue.use(Card);
 Vue.use(Button);
 Vue.use(Paper);
 Vue.use(Drawer);
@@ -24,3 +23,4 @@ Vue.use(TextField);
 Vue.use(Form);
 Vue.use(Grid);
 Vue.use(Checkbox);
+Vue.use(Select);

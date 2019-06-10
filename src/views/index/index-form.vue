@@ -1,17 +1,19 @@
 <template>
-  <mu-container>
+  <mu-container class="index-form">
     <mu-row gutter>
       <mu-col span="12">
-        <mu-form ref="form" :model="FormData">
-          <mu-form-item label="姓名" prop="name" :rules="FormRules.name">
-            <mu-text-field v-model="FormData.name" prop="name"></mu-text-field>
-          </mu-form-item>
+        <mu-form ref="form" :model="userData">
           <mu-form-item label="学号" prop="number" :rules="FormRules.number">
-            <mu-text-field type="number" v-model="FormData.number" prop="number"></mu-text-field>
+            <mu-text-field type="number" v-model="userData.number" prop="number"></mu-text-field>
+          </mu-form-item>
+          <mu-form-item label="姓名" prop="name" :rules="FormRules.name">
+            <mu-text-field v-model="userData.name" prop="name"></mu-text-field>
           </mu-form-item>
           <mu-form-item>
-            <mu-button color="primary" >填写专业</mu-button>
-            <mu-button color="secondary">查询结果</mu-button>
+            <div class="operation-area">
+              <mu-button :disabled="buttonLock" to="/choice" color="primary">填报专业</mu-button>
+              <mu-button :disabled="buttonLock" to="/query" color="secondary">查询结果</mu-button>
+            </div>
           </mu-form-item>
         </mu-form>
       </mu-col>
@@ -19,28 +21,43 @@
   </mu-container>
 </template>
 <script>
+import { store } from "../../store/store.js";
+
 export default {
   name: "index-form",
+  mixins: [store],
   data() {
     return {
-      FormData: {
-        name: "",
-        number: ""
-      },
+      buttonLock: true, // 操作区域被锁住
       FormRules: {
-        // TODO 等待添加表单校验 
-        // see https://muse-ui.org/#/zh-CN/form
-        name: [],
-        number: []
+        name: [{ validate: val => !!val, message: "请填写姓名" }],
+        number: [{ validate: val => !!val, message: "请填写学号" }]
       }
     };
   },
-  methods: {
-
+  methods: {},
+  watch: {
+    // 从 store 中读取
+    userData: {
+      deep: true,
+      immediate: true,
+      handler({ name, number }) {
+        if (name.length > 0 && number.length > 0) {
+          this.buttonLock = false;
+        } else {
+          this.buttonLock = true;
+        }
+      }
+    }
   }
 };
 </script>
 <style>
+.index-form .operation-area {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
 </style>
 
 

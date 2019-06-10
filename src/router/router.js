@@ -14,6 +14,10 @@ export default new Router({
     {
       path: '/query',
       component: () => import(/* webpackChunkName:"query" */'../views/query/query.vue')
+    },
+    {
+      path: '/choice',
+      component: () => import(/* webpackChunkName:"choice" */'../views/choice/choice.vue')
     }
   ]
 });

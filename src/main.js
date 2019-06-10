@@ -13,7 +13,11 @@ if (process.env.VUE_APP_MOCK === 'true'){
   require('./plugins/mock.js');
 }
 
-new Vue({
+const ROOT = new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app');
+
+if (process.env.NODE_ENV === "development") {
+  window.vue = ROOT;
+}

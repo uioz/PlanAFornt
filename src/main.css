@@ -1,7 +1,31 @@
+:root {
+  --font-small: 0.875rem; /* 14px */
+  --font-middle: 16px;
+  --font-large: 1.125rem; /* 18px */
+}
+
+html {
+  font: var(--font-middle) Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
 .pull-left{
   float: left;
 }
 
 .pull-right{
   float: right;
+}
+
+.auto-bg{
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.auto-img{
+  width: 100%;
+  height: auto;
+  display: block;
 }

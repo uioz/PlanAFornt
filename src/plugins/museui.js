@@ -9,7 +9,9 @@ import {
   Grid,
   Checkbox,
   theme,
-  Select
+  Select,
+  Snackbar,
+  Alert
 } from 'muse-ui';
 import 'muse-ui/lib/styles/base.less';
 
@@ -24,3 +26,5 @@ Vue.use(Form);
 Vue.use(Grid);
 Vue.use(Checkbox);
 Vue.use(Select);
+Vue.use(Snackbar);
+Vue.use(Alert);

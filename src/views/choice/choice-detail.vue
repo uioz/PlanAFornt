@@ -52,27 +52,5 @@ export default {
       }
     }
   },
-  computed: {
-    /**
-     * 计算可以选择的内容也就是树的节点
-     */
-    nextNode() {
-      let i = 0,
-        len = this.modelPath,
-        result = this.source;
-
-      while (i < len) {
-        result = result[this.modelPath[i]];
-
-        i++;
-      }
-
-      return result;
-    }
-  }
 };
 </script>
-<style>
-</style>
-
-

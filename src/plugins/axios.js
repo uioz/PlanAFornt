@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { Toast } from "../plugins/musetoast.js";
 
 const AxiosInstance = Axios.create({
   baseURL: '/api',
@@ -27,7 +28,11 @@ AxiosInstance.interceptors.response.use(response => {
   return response;
 
 }, error => {
-  debugger;
+  if(typeof error === 'string'){
+    Toast.error(error);
+  }else{
+    Toast.error('网络连接失败请检查请的网络!');
+  }
 });
 
 export const axios = AxiosInstance;

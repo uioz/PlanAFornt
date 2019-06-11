@@ -18,6 +18,10 @@ export default new Router({
     {
       path: '/choice',
       component: () => import(/* webpackChunkName:"choice" */'../views/choice/choice.vue')
+    },
+    {
+      path: '/done',
+      component: () => import(/* webpackChunkName:"done" */'../views/done/done.vue')
     }
   ]
 });

@@ -27,27 +27,29 @@ export default {
   },
   data() {
     return {
-      model:undefined
+      model: undefined
     };
   },
-  methods:{
-    fetch(){
-
-      if(this.networking){
+  methods: {
+    fetch() {
+      if (this.networking) {
         return;
       }
 
       this.beforeFetch();
 
-      axios.get('/student/info',{
-        params:this.userData
-      })
-      .then(response=>{
-        if(response){
-          this.model = response.data.data;
-        }
-      })
-      .finally(()=>this.afterFetch());
+      axios
+        .get("/student/info", {
+          params: this.userData
+        })
+        .then(response => {
+          if (response) {
+            this.model = response.data.data;
+          } else {
+            this.$router.replace("/");
+          }
+        })
+        .finally(() => this.afterFetch());
 
     }
   },

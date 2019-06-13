@@ -11,7 +11,8 @@ import {
   theme,
   Select,
   Snackbar,
-  Alert
+  Alert,
+  Dialog
 } from 'muse-ui';
 import 'muse-ui/lib/styles/base.less';
 
@@ -28,3 +29,4 @@ Vue.use(Checkbox);
 Vue.use(Select);
 Vue.use(Snackbar);
 Vue.use(Alert);
+Vue.use(Dialog);

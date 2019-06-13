@@ -9,28 +9,25 @@ const AxiosInstance = Axios.create({
 AxiosInstance.interceptors.response.use(response => {
 
   if (response.status !== 200) {
-    // TODO message
-    // return null
-    throw "网络连接失败请检查请的网络!"
+    Toast.error('网络连接失败请检查请的网络!');
+    return null;
   }
 
   if (response.data.stateCode !== 200) {
     if (response.data.message) {
-      // TODO message
-      // return null
-      throw response.data.message;
+      Toast.error(response.data.message);
+      return null;
     }
-    // TODO message
-    // return null
-    throw "未知错误,请刷新重试!";
+    Toast.error('未知错误,请刷新重试!');
+    return null;
   }
 
   return response;
 
 }, error => {
-  if(typeof error === 'string'){
+  if (typeof error === 'string') {
     Toast.error(error);
-  }else{
+  } else {
     Toast.error('网络连接失败请检查请的网络!');
   }
 });

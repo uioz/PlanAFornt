@@ -31,6 +31,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mockjs": "^1.0.1-beta3",
+    "muse-ui-message": "^0.2.1",
     "muse-ui-toast": "^0.3.0",
     "path-to-regexp": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.0",

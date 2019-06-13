@@ -1,7 +1,6 @@
 <template>
   <mu-paper class="index-intro" :z-depth="2">
     <img v-if="GetImageSrcIfHave" class="auto-img" :src="GetImageSrcIfHave">
-    <div v-else>{{ GetClientName }}</div>
   </mu-paper>
 </template>
 <script>
@@ -12,10 +11,10 @@ export default {
   mixins: [store],
   computed: {
     GetImageSrcIfHave() {
-      return this.serverInfo && this.serverInfo.logo;
+      return this.serverInfo && this.serverInfo.logo || '';
     },
     GetClientName() {
-      return this.serverInfo && this.clientName;
+      return this.serverInfo && this.serverInfo.clientName || '';
     }
   }
 };

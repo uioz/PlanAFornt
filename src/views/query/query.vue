@@ -8,17 +8,17 @@
         <mu-row v-if="hasResult">
           <mu-col span="12">
             <mu-paper class="result-panel" :z-depth="2">
-              <p>查询结果:</p>
-              <h3>{{fetchData.picked}}</h3>
+              <p>已选择的专业:</p>
+              <h4 v-for="item in fetchData.picked" :key="item">{{item}}</h4>
               <p>该专业属于:</p>
-              <h3>{{fetchData.speciality}}</h3>
+              <h4>{{fetchData.speciality}}</h4>
             </mu-paper>
           </mu-col>
         </mu-row>
         <mu-row v-if="nonResult">
           <mu-col span="12">
             <mu-paper class="result-panel" :z-depth="2">
-              <h3>还未选择专业!</h3>
+              <h3>还没有选择专业?马上添加一个吧🎉</h3>
             </mu-paper>
           </mu-col>
         </mu-row>
@@ -69,13 +69,9 @@ export default {
         })
         .then(response => {
           if (response) {
-            if (response.data) {
-
-              this.fetchData = response.data.data;
-
-            } else {
-              this.nonResult = true;
-            }
+            this.fetchData = response.data.data;
+          } else {
+            this.nonResult = true;
           }
         })
         .finally(() => this.afterFetch());
@@ -96,8 +92,8 @@ export default {
   margin-top: 1rem;
 }
 
-.query .result-panel{
-  padding: .5rem 1rem;
+.query .result-panel {
+  padding: 0.5rem 1rem;
 }
 </style>
 

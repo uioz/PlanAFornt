@@ -3,7 +3,7 @@
     <mu-row gutter>
       <mu-col span="12">
         <mu-form ref="form" :model="userData">
-          <mu-form-item label="学号" prop="number" :rules="FormRules.number">
+          <mu-form-item label="考生号" prop="number" :rules="FormRules.number">
             <mu-text-field type="number" v-model="userData.number" prop="number"></mu-text-field>
           </mu-form-item>
           <mu-form-item label="姓名" prop="name" :rules="FormRules.name">
@@ -31,7 +31,7 @@ export default {
       buttonLock: true, // 操作区域被锁住
       FormRules: {
         name: [{ validate: val => !!val, message: "请填写姓名" }],
-        number: [{ validate: val => !!val, message: "请填写学号" }]
+        number: [{ validate: val => !!val, message: "请填写考生号" }]
       }
     };
   },

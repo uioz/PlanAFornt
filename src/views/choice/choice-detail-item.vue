@@ -9,7 +9,7 @@
 <template>
   <mu-paper class="choice-detail-item" :z-depth="2">
     <h4>{{ endOfTree ? '选择专业' : '专业细化' }}</h4>
-    <mu-select v-model="picked" full-width @change="handleSelectChange">
+    <mu-select v-model="picked" full-width @change="handleSelectChange" :multiple="endOfTree">
       <mu-option v-for="major of items" :key="major" :label="major" :value="major"></mu-option>
     </mu-select>
     <mu-button v-if="endOfTree" :disabled="!couldUpload" @click="handleUpload" color="primary">提交</mu-button>
@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      picked: ""
+      picked: undefined
     };
   },
   methods: {
@@ -41,15 +41,13 @@ export default {
       this.beforeFetch();
 
       axios
-        .post("/student/result", undefined, {
-          params: {
-            ...this.userData,
-            picked: this.picked
-          }
+        .post("/student/result", {
+          ...this.userData,
+          picked: this.picked
         })
         .then(response => {
           if (response) {
-            this.$router.replace('/done');
+            this.$router.replace("/done");
           }
         })
         .finally(() => this.afterFetch());

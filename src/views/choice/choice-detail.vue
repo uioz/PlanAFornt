@@ -13,7 +13,7 @@ import choiceDetailItem from "./choice-detail-item";
 export default {
   name: "choice-detail",
   props: {
-    source: Object
+    source: [Object,Array]
   },
   components: {
     choiceDetailItem

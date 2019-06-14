@@ -8,7 +8,7 @@
 </docs>
 <template>
   <mu-paper class="choice-detail-item" :z-depth="2">
-    <h4>{{ endOfTree ? '选择专业' : '专业细化' }}</h4>
+    <h4>{{ endOfTree ? '选择专业' : '专业大类' }}</h4>
     <mu-select v-model="picked" full-width @change="handleSelectChange" :multiple="endOfTree">
       <mu-option v-for="major of items" :key="major" :label="major" :value="major"></mu-option>
     </mu-select>

@@ -4,7 +4,7 @@
       <mu-button icon>
         <font-awesome-icon icon="bars"></font-awesome-icon>
       </mu-button>
-      <img v-if="ClientLogoIfHave" style="height:40px;" :src="ClientLogoIfHave" alt="">
+      <!-- <img v-if="ClientLogoIfHave" style="height:40px;" :src="ClientLogoIfHave" alt=""> -->
       {{ClientNameIfHave}}
     </template>
     <template #right>
